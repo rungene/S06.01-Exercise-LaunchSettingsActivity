@@ -5,8 +5,11 @@ import android.os.Bundle;
 import android.support.v4.app.ShareCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.widget.TextView;
+
+import com.example.android.sunshine.utilities.SettingsActivityClass;
 
 public class DetailActivity extends AppCompatActivity {
 
@@ -49,11 +52,41 @@ public class DetailActivity extends AppCompatActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.detail, menu);
+
+                /* Use AppCompatActivity's method getMenuInflater to get a handle on the menu inflater */
+        MenuInflater inflater = getMenuInflater();
+        /* Use the inflater's inflate method to inflate our menu layout to this menu */
+        inflater.inflate(R.menu.detail, menu);
+        /* Return true so that the menu is displayed in the Toolbar */
+     /*   getMenuInflater().inflate(R.menu.detail, menu);
+
+
         MenuItem menuItem = menu.findItem(R.id.action_share);
-        menuItem.setIntent(createShareForecastIntent());
+        menuItem.setIntent(createShareForecastIntent());*/
         return true;
     }
 
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+
+        if (id == R.id.action_share) {
+        createShareForecastIntent();
+            return true;
+        }
+        if (id == R.id.action_detailsettings) {
+
+         openSettingsActivity();
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+    private void openSettingsActivity() {
+
+        Intent intent = new Intent(DetailActivity.this, SettingsActivityClass.class);
+        startActivity(intent);
+
+    }
     // TODO (7) Launch SettingsActivity when the Settings option is clicked
 }

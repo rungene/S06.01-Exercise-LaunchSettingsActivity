@@ -36,6 +36,7 @@ import android.widget.TextView;
 import com.example.android.sunshine.data.SunshinePreferences;
 import com.example.android.sunshine.utilities.NetworkUtils;
 import com.example.android.sunshine.utilities.OpenWeatherJsonUtils;
+import com.example.android.sunshine.utilities.SettingsActivityClass;
 
 import java.net.URL;
 
@@ -346,6 +347,11 @@ public class MainActivity extends AppCompatActivity implements
             return true;
         }
 
+        if (id == R.id.action_settings) {
+            openSettingsActivity();
+            return true;
+        }
+
         // TODO (1) Add new Activity called SettingsActivity using Android Studio wizard
         // Do step 2 in SettingsActivity
         // TODO (2) Set setDisplayHomeAsUpEnabled to true on the support ActionBar
@@ -353,5 +359,12 @@ public class MainActivity extends AppCompatActivity implements
         // TODO (6) Launch SettingsActivity when the Settings option is clicked
 
         return super.onOptionsItemSelected(item);
+    }
+
+    private void openSettingsActivity() {
+
+        Intent intent = new Intent(MainActivity.this, SettingsActivityClass.class);
+        startActivity(intent);
+
     }
 }

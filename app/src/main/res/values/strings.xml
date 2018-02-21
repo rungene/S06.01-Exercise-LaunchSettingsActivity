@@ -34,6 +34,14 @@
     <!--Used in overflow menu to refresh weather data-->
     <string name="action_refresh">Refresh</string>
 
+
+    <!--Used in overflow menu to settings activity-->
+    <string name="action_settings">Settings</string>
+
+
+    <!--Used in overflow menu to settings activity-->
+    <string name="action_detailssettings">Settings</string>
+
     <string name="error_message">
         An error has occurred. Please try again by clicking REFRESH
     </string>
